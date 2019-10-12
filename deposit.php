@@ -12,15 +12,21 @@ $cardno = $_SESSION["cardno"];
 <html>
 <head>
 	<title></title>
+		<link rel="stylesheet" type="text/css" href="main.css">
+
 </head>
 <body>
-Enter the amount to deposit
+		<h1>
+Deposit
+</h1>
+<div class="box">
 
 <?php
-if(isset($_POST["submit"]))
+if(isset($_POST["submit"]) && $_POST['amount']>0)
 {
 	$amt  =$_POST["amount"];
-
+	
+	
 	$qry = "SELECT balance from account where cardno=".$cardno;
 
 	$res = mysqli_query($conn,$qry);
@@ -41,13 +47,21 @@ if(isset($_POST["submit"]))
 		mysqli_query($conn,$q);	
 		$qry1 = "INSERT into transaction(cardno,timeof,amount,type) values('$cardno','$now','$amt','deposit');";
 		mysqli_query($conn,$qry1);
+
 }
 else{
+	
 ?>
+Enter the amount to deposit
 <form method="POST">
 	<input type="number" name="amount" required value="0">
 	<input type="submit" name="submit" value="Deposit">
 </form>
-<?php } ?>
+<?php 
+if(isset($_POST["submit"]) && $_POST['amount']<=0)
+		echo "<p style='color:red'>enter a valid amount</p>";
+
+} ?>
+</div>
 </body>
 </html>

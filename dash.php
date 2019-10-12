@@ -8,7 +8,11 @@ if(!isset($_SESSION["auth"]))
 
 ?>
 <html>
+<head></head>
+	<link rel="stylesheet" type="text/css" href="main.css">
+
 <body>
+<div class="box">
 
 <h2>
 Dashboard
@@ -17,6 +21,7 @@ Dashboard
 <li><a href="withdraw.php">Withdrawal</a></li>
 <li><a href="deposit.php">Deposit</a></li>
 <li><a href="pinchange.php">Change Pin</a></li>
-<li><a href="dash.php?set-limit=1">Set Limit</a></li>	
+<li><a href="transact.php">Dipslay Transactions</a></li>	
+</div>
 </body>
 </html>

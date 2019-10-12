@@ -1,0 +1,66 @@
+.box 
+{	
+	
+	width: 200px;
+	margin: 100px auto;
+	padding:50px;
+	border : 5px double;
+	background-color: #f1f1f1;
+}
+fieldset
+{
+	
+	width: 200px;
+	margin: 100px auto;
+	padding:40px;
+}
+input
+{
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding:4px;
+	width: 200px;
+}
+
+input[type=submit]
+{
+	margin-top: 10px;
+	background-color:#215ce0;
+	color :white;
+	border:2px solid #215ce0;
+	border-radius: 5px;
+	padding:6px;
+	width:200px;
+	font-family: Tahoma;
+	font-size: 12pt;
+
+}
+
+*{
+	font-family: sans-serif;
+}
+h1
+{
+	text-align: center;
+}
+legend
+{
+	font-weight: bolder;
+	font-size: 20pt;
+
+}
+input[type=submit]:focus
+{	
+	margin-top: 10px;
+	font-size: 12pt;
+	background-color:white;
+	color :#215ce0;
+	border:2px solid #215ce0;
+	border-radius: 5px;
+	padding:6px;
+	width:200px
+}
+li
+{
+	margin:10px 0px;
+}

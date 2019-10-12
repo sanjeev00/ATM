@@ -10,16 +10,26 @@ $cardno = $_SESSION["cardno"];
  <html>
  <head>
  	<title></title>
+ 		<link rel="stylesheet" type="text/css" href="main.css">
+
  </head>
  <body>
+ 	<h1>
+Withdrawal
+</h1>
+ 	<div class="box">
+
  <?php 
 
 
-if(isset($_POST["submit"]))
+if(isset($_POST["submit"]) && $_POST['amount']>0)
+
 
 {	
 	$amt  =$_POST["amount"];
-
+	if($amt<=0)
+		echo "enter a valid amount<br>";
+	else{
 	$qry = "SELECT balance from account where cardno=".$cardno;
 
 	$res = mysqli_query($conn,$qry);
@@ -50,7 +60,7 @@ if(isset($_POST["submit"]))
 
 
 
-
+}
 
 
 }
@@ -61,6 +71,12 @@ if(isset($_POST["submit"]))
  	<br>
  	<input type="submit" name="submit" value="withdraw">
  </form>
-<?php } ?>
+
+<?php 
+	if(isset($_POST["submit"]) && $_POST['amount']<=0)
+		echo "<p style='color:red'>enter a valid amount</p>";
+
+} ?>
+</div>
  </body>
  </html>
