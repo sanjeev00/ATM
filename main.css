@@ -1,4 +1,4 @@
-.box 
+.box
 {	
 	
 	width: 200px;
@@ -6,6 +6,27 @@
 	padding:50px;
 	border : 5px double;
 	background-color: #f1f1f1;
+}
+#det
+{
+	margin:50px;
+}
+.dash{
+	display: inline-block;
+	width: 200px;
+	margin-left:100px;
+	
+	padding:50px;
+	border : 5px double;
+	background-color: #f1f1f1;
+}
+.detail
+{
+	margin-left:100px;
+	display: inline-block;
+	width: 400px;
+	
+	
 }
 fieldset
 {
@@ -21,8 +42,43 @@ input
 	padding:4px;
 	width: 200px;
 }
+#green
+{
+	background-color: #d4edda;
+	
+}
+#red
+{
+	background-color: #f8d7da;
+}
+table
+{
+	border:5px;
+	margin:0px auto;
+}
 
-input[type=submit]
+td,th
+{
+	padding-left:20px;
+
+	padding-bottom: 8px;
+	padding-top: 8px;
+}
+#log
+{
+	position: absolute;
+	top:0px;
+	right: 20px;
+	background-color:#215ce0;
+	color :white;
+	border:2px solid #215ce0;
+	border-radius: 5px;
+	padding:6px;
+	width:100px;
+	font-family: Tahoma;
+	font-size: 12pt;
+}
+input[type=submit],button
 {
 	margin-top: 10px;
 	background-color:#215ce0;
@@ -35,13 +91,20 @@ input[type=submit]
 	font-size: 12pt;
 
 }
-
+button
+{
+	width: 100px;
+	position: relative;
+	top:5px;
+	left:10px;
+}
 *{
 	font-family: sans-serif;
 }
 h1
 {
 	text-align: center;
+	font-size:40pt;
 }
 legend
 {

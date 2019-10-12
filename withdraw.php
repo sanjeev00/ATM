@@ -2,6 +2,8 @@
 include 'connect.php';
 
 session_start();
+if(!isset($_SESSION["auth"]))
+	header('location:index.php');
 $cardno = $_SESSION["cardno"];
 
  ?>
@@ -14,6 +16,9 @@ $cardno = $_SESSION["cardno"];
 
  </head>
  <body>
+ 		<?php  include 'header.php';
+	?>	
+
  	<h1>
 Withdrawal
 </h1>

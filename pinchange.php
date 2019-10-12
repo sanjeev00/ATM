@@ -2,7 +2,10 @@
 
 session_start();
 include 'connect.php';
+if(!isset($_SESSION["auth"]))
+	header('location:index.php');
 $cardno = $_SESSION["cardno"];
+
 if(isset($_POST["submit"]))
 {
 	$pin = $_POST['pin'];
