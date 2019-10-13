@@ -20,7 +20,7 @@ $cardno = $_SESSION["cardno"];
 	?>	
 
  	<h1>
-Withdrawal
+Fund Transfer
 </h1>
  	<div class="box">
 
@@ -60,8 +60,10 @@ if (isset($_POST["submit"]) && $_POST['amount']>0 && $_POST["accno"] > 0)  {
 			 		$qrytoaddtransdest = "INSERT into transaction(cardno,timeof,amount,type) values('$cardno','$now','$amt','transferin');";
 			 		mysqli_query($conn,$q);	
 			 		mysqli_query($conn,$qrytoaddtransdest);	
-			 		mysqli_query($conn,$qrytoupdatedestbalance);	
-			 		$qry1 = "INSERT into transaction(cardno,timeof,amount,type) values('$cardno','$now','$amt','transferout');";
+			 		mysqli_query($conn,$qrytoupdatedestbalance);
+			 		$r=mysqli_fetch_assoc(mysqli_query($conn,"SELECT cardno from account where accno='$accno'"));	
+			 		$dcard = $r['cardno'];
+			 		$qry1 = "INSERT into transaction(cardno,timeof,amount,type) values('$dcard','$now','$amt','transferout');";
 			 		mysqli_query($conn,$qry1);
 			 		echo mysqli_error($conn);
 			 	}
