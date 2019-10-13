@@ -57,13 +57,14 @@ if (isset($_POST["submit"]) && $_POST['amount']>0 && $_POST["accno"] > 0)  {
 			 		$q = "UPDATE account SET balance=".$balance." WHERE cardno=".$cardno;
 			 		$destnewbalance = $rowdest["balance"] + $amt;
 			 		$qrytoupdatedestbalance = "UPDATE account SET balance=".$destnewbalance." WHERE accno=".$accno;
-			 		$qrytoaddtransdest = "INSERT into transaction(cardno,timeof,amount,type) values('$cardno','$now','$amt','transferin');";
+			 		$r=mysqli_fetch_assoc(mysqli_query($conn,"SELECT cardno from account where accno='$accno'"));	
+			 		$dcard = $r['cardno'];
+			 		$qrytoaddtransdest = "INSERT into transaction(cardno,timeof,amount,type) values('$dcard','$now','$amt','transferin');";
 			 		mysqli_query($conn,$q);	
 			 		mysqli_query($conn,$qrytoaddtransdest);	
 			 		mysqli_query($conn,$qrytoupdatedestbalance);
-			 		$r=mysqli_fetch_assoc(mysqli_query($conn,"SELECT cardno from account where accno='$accno'"));	
-			 		$dcard = $r['cardno'];
-			 		$qry1 = "INSERT into transaction(cardno,timeof,amount,type) values('$dcard','$now','$amt','transferout');";
+			 		
+			 		$qry1 = "INSERT into transaction(cardno,timeof,amount,type) values('$cardno','$now','$amt','transferout');";
 			 		mysqli_query($conn,$qry1);
 			 		echo mysqli_error($conn);
 			 	}
