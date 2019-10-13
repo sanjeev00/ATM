@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 12, 2019 at 04:32 PM
+-- Generation Time: Oct 13, 2019 at 06:08 AM
 -- Server version: 8.0.12
 -- PHP Version: 7.1.15
 
@@ -40,7 +40,7 @@ CREATE TABLE `account` (
 --
 
 INSERT INTO `account` (`cardno`, `accno`, `ifsc`, `balance`) VALUES
-('8888', '1024', 'ACD123', 60015);
+('8888', '1024', 'ABCD123', 55035);
 
 -- --------------------------------------------------------
 
@@ -53,6 +53,13 @@ CREATE TABLE `bank` (
   `ifsc` varchar(15) NOT NULL,
   `branchname` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `bank`
+--
+
+INSERT INTO `bank` (`bankname`, `ifsc`, `branchname`) VALUES
+('Central Bank of America', 'ABCD123', 'California');
 
 -- --------------------------------------------------------
 
@@ -82,7 +89,13 @@ INSERT INTO `transaction` (`cardno`, `timeof`, `amount`, `type`, `id`) VALUES
 ('8888', '2019-10-12 14:31:39', 0, 'deposit', 17),
 ('8888', '2019-10-12 14:31:45', 0, 'deposit', 18),
 ('8888', '2019-10-12 14:34:18', 1, 'deposit', 19),
-('8888', '2019-10-12 14:55:12', 20, 'withdraw', 20);
+('8888', '2019-10-12 14:55:12', 20, 'withdraw', 20),
+('8888', '2019-10-12 17:38:06', 5000, 'withdraw', 21),
+('8888', '2019-10-12 17:38:57', 5000000, 'deposit', 22),
+('8888', '2019-10-12 17:39:22', 5000000, 'withdraw', 23),
+('8888', '2019-10-12 18:11:21', 1000, 'deposit', 24),
+('8888', '2019-10-12 19:36:31', 20, 'deposit', 25),
+('8888', '2019-10-12 19:36:43', 1000, 'withdraw', 26);
 
 -- --------------------------------------------------------
 
@@ -93,16 +106,18 @@ INSERT INTO `transaction` (`cardno`, `timeof`, `amount`, `type`, `id`) VALUES
 CREATE TABLE `user` (
   `cardno` varchar(20) NOT NULL,
   `fname` varchar(20) NOT NULL,
+  `lname` varchar(15) NOT NULL,
   `age` int(5) NOT NULL,
-  `pin` varchar(4) NOT NULL
+  `pin` varchar(4) NOT NULL,
+  `attempt` int(11) NOT NULL DEFAULT '3'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`cardno`, `fname`, `age`, `pin`) VALUES
-('8888', '', 0, '1234');
+INSERT INTO `user` (`cardno`, `fname`, `lname`, `age`, `pin`, `attempt`) VALUES
+('8888', 'Richard', 'Hendricks', 23, '0000', 3);
 
 --
 -- Indexes for dumped tables
@@ -140,7 +155,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `transaction`
 --
 ALTER TABLE `transaction`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
