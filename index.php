@@ -8,10 +8,7 @@ include 'connect.php';
 <html>
 		<link rel="stylesheet" type="text/css" href="main.css">
 
-
-<body >
-	
-	<div id="body">
+<body>
 	<h1>
 	
 	ATM</h1>
@@ -20,9 +17,7 @@ include 'connect.php';
 		<a href="auth.php">Authenticate</a>
 	</fieldset>
 
-</div>
 </body>
-
 
 </html>
 

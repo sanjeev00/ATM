@@ -7,21 +7,6 @@
 	border : 5px double;
 	background-color: #f1f1f1;
 }
-
-#body:before
-{
-	
-	background-repeat: no-repeat;
-    background-size: cover;
-	content:' ';
-	opacity: 0.5;
-	width: 100%;
-	height: 100%;
-	position:absolute;
-	z-index:-1;
-	background-image: url('money.jpg');
-
-}
 #det
 {
 	margin:50px;
@@ -45,9 +30,7 @@
 }
 fieldset
 {
-	background-color: #ffffffe8;
-    
-    border-radius: 25px;
+	
 	width: 200px;
 	margin: 100px auto;
 	padding:40px;
@@ -117,7 +100,6 @@ button
 }
 *{
 	font-family: sans-serif;
-	margin:0px;
 }
 h1
 {
