@@ -25,7 +25,8 @@ Dashboard
 <li><a href="withdraw.php">Withdrawal</a></li>
 <li><a href="deposit.php">Deposit</a></li>
 <li><a href="pinchange.php">Change Pin</a></li>
-<li><a href="transact.php">Dipslay Transactions</a></li>	
+<li><a href="transact.php">Dipslay Transactions</a></li>
+<li><a href="fundtransfer.php">Funds Transfer</a></li>		
 </div>
 
 <div class="box detail">

@@ -45,28 +45,25 @@ if(isset($_POST["submit"]) && $_POST['amount']>0)
 	
 	$balance = $row["balance"]-$amt;
 	if($balance<0)
-		echo "insufficient funds";
+		echo "Insufficient funds";
 	else
 	{
-		echo "withdraw of ".$_POST["amount"]." successfull<br>";
+		echo "--> Withdraw of ".$_POST["amount"]." Successfull<br><br>";
 		$now = new DateTime();
+		echo "--> ";
 		echo $now->format('Y-m-d H:i:s');
 		$now =$now-> format('Y-m-d H:i:s');
 		$q = "UPDATE account SET balance=".$balance." WHERE cardno=".$cardno;
+		echo "<br><br>--> Available balance: " . $balance . ".<br>";
 		mysqli_query($conn,$q);	
 		$qry1 = "INSERT into transaction(cardno,timeof,amount,type) values('$cardno','$now','$amt','withdraw');";
 		mysqli_query($conn,$qry1);
 		echo mysqli_error($conn);
 	}
 
-}
-
-	
-
-
+	}
 
 }
-
 
 }
  else {?>
@@ -74,7 +71,7 @@ if(isset($_POST["submit"]) && $_POST['amount']>0)
  <form method="POST">
  	<input type="number" name="amount" value="0" required>
  	<br>
- 	<input type="submit" name="submit" value="withdraw">
+ 	<input type="submit" name="submit" value="Withdraw">
  </form>
 
 <?php 
