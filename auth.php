@@ -7,9 +7,9 @@ if(isset($_POST["submit"]))
 session_start();
 $cardno = $_POST["cardno"];
 $pin = $_POST["pin"];
-$query = "SELECT * from user where cardno='".$cardno."';";
+$query = "SELECT * from user where cardno='$cardno';";
 $res = mysqli_query($conn,$query);
-
+echo mysqli_error($conn);
 $num = mysqli_num_rows($res);
 
 

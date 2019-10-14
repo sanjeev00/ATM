@@ -1,4 +1,4 @@
 <?php
-$conn = mysqli_connect("localhost","root","1234!@#$","atm");
+$conn = mysqli_connect("localhost","root","password","atm");
 
 ?>

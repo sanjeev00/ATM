@@ -44,6 +44,11 @@ if (isset($_POST["submit"]) && $_POST['amount']>0 && $_POST["accno"] > 0)  {
 			if($res){
 			 	$row = mysqli_fetch_assoc($res);
 			 	$balance = $row["balance"]-$amt;
+			 	$r=mysqli_fetch_assoc(mysqli_query($conn,"SELECT cardno from account where accno='$accno'"));	
+			 		$dcard = $r['cardno'];
+			 	if($dcard!=$cardno)
+			 	{
+
 			 	if($balance<0){
 			 		echo "--> Insufficient funds<br><br>";
 			 		echo "--> Transfer to " .$rowdest["fname"]. " failed.<br>";
@@ -57,8 +62,7 @@ if (isset($_POST["submit"]) && $_POST['amount']>0 && $_POST["accno"] > 0)  {
 			 		$q = "UPDATE account SET balance=".$balance." WHERE cardno=".$cardno;
 			 		$destnewbalance = $rowdest["balance"] + $amt;
 			 		$qrytoupdatedestbalance = "UPDATE account SET balance=".$destnewbalance." WHERE accno=".$accno;
-			 		$r=mysqli_fetch_assoc(mysqli_query($conn,"SELECT cardno from account where accno='$accno'"));	
-			 		$dcard = $r['cardno'];
+			 		
 			 		$qrytoaddtransdest = "INSERT into transaction(cardno,timeof,amount,type) values('$dcard','$now','$amt','transferin');";
 			 		mysqli_query($conn,$q);	
 			 		mysqli_query($conn,$qrytoaddtransdest);	
@@ -70,6 +74,11 @@ if (isset($_POST["submit"]) && $_POST['amount']>0 && $_POST["accno"] > 0)  {
 			 	}
 
 			}
+			else
+			{
+				echo "<p>Sorry You cannot transfer to your own account</p>";
+			}
+		}
 
 		}
 	}else{

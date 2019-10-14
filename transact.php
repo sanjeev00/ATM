@@ -43,7 +43,7 @@ if(isset($_POST["submit"]))
 		echo "<tr><th>Time of Transactions</th><th>Amount</th><th>Type</th><th>Card no</th></tr>";
 		while($row = $res->fetch_assoc()) {
 
-			if($row['type']=="withdraw")
+			if($row['type']=="withdraw" || $row['type']=="transferout")
 				echo "<tr id='red'>";
 			else
 				echo "<tr id='green'>";
